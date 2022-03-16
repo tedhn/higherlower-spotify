@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function App() {
+const App: FC = () => {
+  const [a, setAuth] = useState(false);
+  const client_secret = "30858fd347194880babd7cee8e625b07";
+  const CLIENT_ID = "e7baec829191449ea3f360afb46049ae";
+  const REDIRECT_URI = "http://localhost:3000/home/";
+  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+  const RESPONSE_TYPE = "token";
+  const SCOPE =
+    "user-read-private user-read-email playlist-modify-public playlist-modify-private playlist-read-collaborative playlist-read-private user-top-read";
+
+  const auth = () => {
+    window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div onClick={auth}>Login to Spotify</div>
     </div>
   );
-}
+};
 
 export default App;
