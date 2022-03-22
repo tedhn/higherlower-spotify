@@ -1,21 +1,23 @@
 import React, { FC, useEffect, useState } from "react";
 import axios from "axios";
-import Panel from "./components/Panel";
 
 import "./Home.scss";
 
 const Home: FC = () => {
   //https://api.spotify.com/v1
   const [token, setToken] = useState("");
+  const [hscore, setHscore] = useState<any>("");
   const [total, setTotal] = useState(0);
   const [score, setScore] = useState<number>(0);
-  const [usedSongs, setUsedSongs] = useState<Array<any>>([]);
   const [currentSongs, setCurrentSongs] = useState<Array<any>>([]);
   const [clicked, setClicked] = useState<boolean>(false);
   const [gameover, setGameover] = useState<boolean>(false);
 
   const OnComponentLoad = async () => {
     const token = window.location.hash.split("&")[0].split("=")[1];
+    const hs = window.localStorage.getItem("highscore")
+      ? window.localStorage.getItem("highscore")
+      : "0";
     let newSongs: Array<any> = [];
 
     const total = await GetTotalTracksSaved(token);
@@ -26,9 +28,9 @@ const Home: FC = () => {
       newSongs = newSongs.concat(song);
     }
 
+    setHscore(hs);
     setToken(token);
     setTotal(total);
-    setUsedSongs(newSongs);
     setCurrentSongs(newSongs);
   };
 
@@ -76,6 +78,12 @@ const Home: FC = () => {
     }
   }, [score]);
 
+  useEffect(() => {
+    if (score > hscore) {
+      window.localStorage.setItem("highscore", score.toString());
+    }
+  }, [gameover]);
+
   const UpdateScore = () => {
     setScore(score + 1);
   };
@@ -115,12 +123,28 @@ const Home: FC = () => {
   return (
     <div className="Home">
       <div className="shade"></div>
-      <div className="Score">Score : {score}</div>
 
+      {gameover || (
+        <>
+          <div className="Score">
+            Score : {score}
+            <div>High Score : {hscore}</div>
+          </div>
+          <div className="vs">Vs</div>
+        </>
+      )}
       {gameover ? (
+        //game over screen
         <div className="loser">
-          YOU LOSE TRY AGAIN NEXT TIME SCORE : {score}
-          <div onClick={ResetGame}>TRY AGAIN</div>
+          <div className="filter"></div>
+
+          <div className="score">
+            <div className="text">You scored:</div>
+            {score}
+          </div>
+          <div onClick={ResetGame} className="button">
+            Play Again
+          </div>
         </div>
       ) : (
         <>

@@ -15,6 +15,22 @@
     opacity: 0.8;
   }
 
+  .vs {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    border: 1px solid white;
+    border-radius: 50%;
+  }
+
   .Score {
     position: absolute;
     bottom: 0;
@@ -85,7 +101,49 @@
   }
 
   .loser {
+    grid-column: 1 / span 2;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 28px;
+    background-image: url("./images/sad.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .filter {
+      background-image: linear-gradient(black, black);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      opacity: 0.4;
+      z-index: 1;
+    }
+
+    .score {
+      position: relative;
+      z-index: 2;
+      margin: 20px;
+      font-size: 48px;
+      .text {
+        font-size: 24px;
+      }
+    }
+
+    .button {
+      position: relative;
+      z-index: 2;
+      margin: 20px 50px;
+      padding: 20px 75px;
+      font-size: 24px;
+      cursor: pointer;
+    }
   }
 }

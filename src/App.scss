@@ -1,0 +1,49 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+
+  background-image: url("./images/88.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .text {
+    position: relative;
+    z-index: 2;
+    .title {
+      font-size: 64px;
+      margin: 50px;
+    }
+    .subtitle {
+      font-size: 24px;
+      margin: 5px;
+    }
+
+    .dsc {
+      font-size: 18px;
+      margin: 5px;
+    }
+
+    .button {
+      font-size: 24px;
+      cursor: pointer;
+      margin: 50px;
+    }
+  }
+
+  .filter {
+    background-image: linear-gradient(black, black);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0.7;
+    z-index: 1;
+  }
+}
