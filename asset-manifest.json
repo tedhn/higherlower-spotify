@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/higherlower-spotify/static/css/main.20394386.css",
+    "main.js": "/higherlower-spotify/static/js/main.10bd5fce.js",
+    "static/media/88.jpg": "/higherlower-spotify/static/media/88.d11c2a15cb4b10782e0b.jpg",
+    "static/media/sad.jpg": "/higherlower-spotify/static/media/sad.55927dca1d0cc51a6184.jpg",
+    "index.html": "/higherlower-spotify/index.html",
+    "main.20394386.css.map": "/higherlower-spotify/static/css/main.20394386.css.map",
+    "main.10bd5fce.js.map": "/higherlower-spotify/static/js/main.10bd5fce.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.20394386.css",
+    "static/js/main.10bd5fce.js"
+  ]
+}
